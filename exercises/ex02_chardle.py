@@ -25,7 +25,7 @@ def input_letter() -> str:
     return chosen_letter
 
 
-def contains_char(word: str, letter: str) -> str:
+def contains_char(word: str, letter: str) -> None:
     """Crosscheck input characters and letters"""
     matches: int = 0
     print(
