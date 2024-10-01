@@ -7,7 +7,7 @@ def input_guess(secret_word_len: int) -> str:
     """Set up proper guess length"""
     chosen_word: str = input(f"Enter a {secret_word_len} character word: ")
     while not (len(chosen_word) == secret_word_len):
-        chosen_word = input(f"That wasn't {secret_word_len} characters! Try again: ")
+        chosen_word = input(f"That wasn't {secret_word_len} chars! Try again: ")
     return chosen_word
 
 
@@ -51,17 +51,20 @@ def emojified(chosen: str, unknown: str) -> str:
 def main(secret: str) -> None:
     """The entrypoint of the program and main game loop."""
     current_turn: int = 1
-    while current_turn <= 6:  # need to add not won yet
+    total_tries: int = 6
+    while current_turn <= total_tries:  # need to add not won yet
+        print(f"=== Turn {current_turn}/{total_tries} ===")
         current_guess: str = input_guess(len(secret))
-        print(f"=== Turn {current_turn} / 6 ===")
         if current_guess == secret:
             print(emojified(secret, secret))
-            print(f"You won in {current_turn}/ 6 turns!")
-            exit()
+            print(f"You won in {current_turn}/{total_tries} turns!")
+            return
         else:
             print(emojified(current_guess, secret))
             current_turn += 1
-    print("X/6 - Sorry, try again tomorrow!")
+    if current_turn > 6:
+        print(f"X/{total_tries} - Sorry, try again tomorrow!")
+        return
 
 
 # Went to office hours for help, needed to add current_guess variable

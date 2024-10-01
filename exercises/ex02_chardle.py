@@ -28,12 +28,8 @@ def input_letter() -> str:
 def contains_char(word: str, letter: str) -> None:
     """Crosscheck input characters and letters"""
     matches: int = 0
-    print(
-        "Searching for " + letter + " in " + word
-    )  # can't use previous local variables here
-    if (
-        word[0] == letter
-    ):  # keep getting an error about subscription for return type none. fixed in lines 14 and 25
+    print("Searching for " + letter + " in " + word)  # can't use previous local variables here
+    if (word[0] == letter):  # keep getting an error about subscription for return type none. fixed in lines 14 and 25
         print(letter + " found at index 0")
         matches = matches + 1
     else:
